@@ -19,19 +19,15 @@ type Formatter struct {
 	CommentColor SprintfFuncer
 	AttrKeyColor SprintfFuncer
 	AttrValColor SprintfFuncer
-
-	Indent bool
 }
 
-func NewFormatter(indent bool) *Formatter {
+func NewFormatter() *Formatter {
 	return &Formatter{
 		TagColor:     color.New(color.FgMagenta),
 		BracketColor: color.New(color.FgCyan),
 		CommentColor: color.New(color.FgBlue),
 		AttrKeyColor: color.New(color.FgGreen),
 		AttrValColor: color.New(color.FgRed),
-
-		Indent: indent,
 	}
 }
 
