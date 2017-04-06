@@ -41,7 +41,7 @@ func (f *Formatter) TagFprint(dst io.Writer, token html.Token) {
 	}
 }
 
-func (f *Formatter) Format(dst io.Writer, src []byte) {
+func (f *Formatter) Format(dst io.Writer, src []byte) error {
 	sprintfTag := f.TagColor.SprintfFunc()
 	sprintfBracket := f.BracketColor.SprintfFunc()
 	sprintfComment := f.CommentColor.SprintfFunc()
@@ -56,7 +56,7 @@ func (f *Formatter) Format(dst io.Writer, src []byte) {
 		tokentype := tokenizer.Next()
 
 		if tokentype == html.ErrorToken {
-			return
+			return tokenizer.Err()
 		}
 
 		token := tokenizer.Token()
@@ -93,4 +93,6 @@ func (f *Formatter) Format(dst io.Writer, src []byte) {
 			fmt.Fprint(dst, token.Data)
 		}
 	}
+
+	return nil
 }
