@@ -17,9 +17,9 @@ package main
 import (
         "bytes"
         "fmt"
+        
+        "github.com/x86kernel/htmlcolor"
 )
-
-import "github.com/x86kernel/htmlcolor"
 
 func main() {
         htmlformatter := htmlcolor.NewFormatter()
